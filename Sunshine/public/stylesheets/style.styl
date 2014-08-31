@@ -1,0 +1,109 @@
+body 
+  font: 10px sans-serif
+
+.y.axisRight text 
+    fill: orange
+
+
+.y.axisLeft text 
+    fill: steelblue
+
+.axis path,
+.axis line 
+  fill: none
+  stroke: #000
+  shape-rendering: crispEdges
+
+.bar1 
+  fill: steelblue
+
+
+.bar2 
+  fill: orange
+
+
+.x.axis path 
+  display: none
+
+.y2.axis path 
+  display: none
+
+.bar1:hover
+	fill: #003BFF
+
+.bar2:hover
+	fill: #FF7F00
+
+.t1.d3-tip 
+  line-height: 1
+  font-weight: bold
+  padding: 12px
+  background: rgba(0, 0, 0, 0.8)
+  color: #fff
+  border-radius: 2px
+
+.t1.d3-tip:after 
+  box-sizing: border-box
+  display: inline
+  font-size: 10px
+  width: 100%
+  line-height: 1
+  color: rgba(0, 0, 0, 0.8)
+  content: "\25BC"
+  position: absolute
+  text-align: center
+
+.t1.d3-tip.n:after 
+  margin: -1px 0 0 0
+  top: 100%
+  left: 0
+
+.t2.d3-tip
+  position: fixed
+  top: 30px;
+  right: 5px;
+  width: 150px
+  height: auto
+  padding: 10px
+  background-color:#ac92ec
+  border-radius: 10px
+  pointer-events:none
+  text-align: center
+
+#tooltip
+  position: static
+  width: 200px
+  height: auto
+  padding: 10px
+  background-color:#5d9cec
+  border-radius: 10px
+  pointer-events:none
+
+#tooltip.hidden
+  display:none
+
+#tooltip p
+  color:#0f0
+
+.arc path
+  stroke: #fff
+
+table
+  border-collapse: collapse
+  width: 350px
+  height: 190px
+table,td
+  border:1px solid black
+caption
+  font-size: 12px
+#hd
+  text-align:right
+  font-weight:bold
+
+#dd
+  text-indent:10px
+#overview
+  margin-top : -280px
+  margin-left: 800px
+
+
