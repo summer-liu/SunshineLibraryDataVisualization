@@ -1,5 +1,6 @@
 var mongoose = require('mongoose');
 var express = require("express");
+var fs = require('fs');
 mongoose.connect('mongodb://localhost/sunshine');
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -42,6 +43,7 @@ DataProvider.prototype.AllData = function(callback){
 		var problemAccuracy = [];
 		var focusTime = [];
 		var averageFocusTime = [0,0,0,0,0,0,0,0];
+		var scoreDistribution = [0,0,0,0,0,0,0,0,0,0,0];
 
 		var corrects = [0,0,0,0,0,0,0];
 		var incorrects = [0,0,0,0,0,0,0];
@@ -49,8 +51,9 @@ DataProvider.prototype.AllData = function(callback){
 		var recordNum = [0,0,0,0,0,0,0,0];
 
 		for(var i = 0; i < len ; i++){
-			studentOverview[i] = [docs[i].userId, docs[i].data.summary.correct_count, docs[i].data.summary.star ,(docs[i].data.activities["8eb24161-de14-43cc-bfc1-a41040dadab2"].duration/3600).toFixed(2)]; 
-			
+			//studentOverview[i] = [docs[i].userId, docs[i].data.summary.correct_percent, docs[i].data.summary.star ,(docs[i].data.activities["8eb24161-de14-43cc-bfc1-a41040dadab2"].duration/3600).toFixed(2)]; 
+
+
 			studentProblem[i] = [];
 			
 
@@ -80,9 +83,19 @@ DataProvider.prototype.AllData = function(callback){
 
 			    for(var j = 0; j < problemNum; j++){
 			    	time[j] = interval(docs[i].data.activities["8eb24161-de14-43cc-bfc1-a41040dadab2"].problems[problemName[j]].enter_time,docs[i].data.activities["8eb24161-de14-43cc-bfc1-a41040dadab2"].problems[problemName[j]].submit_time);
+			    	time[j] = parseFloat(time[j])
 			    }
 
-			    focusTime[i] = [videoTime,time[0],time[1],time[2],time[3],time[4],time[5],time[6]];	
+			    focusTime[i] = [parseFloat(videoTime),time[0],time[1],time[2],time[3],time[4],time[5],time[6]];	
+
+			    studentOverview[i] = {
+					"studentId":docs[i].userId, 
+					"correctPercent":(docs[i].data.summary.correct_percent == undefined) ? -1: docs[i].data.summary.correct_percent, 
+					"star":(docs[i].data.summary.star ==  undefined) ? -1:docs[i].data.summary.star ,
+					"totalTime": (docs[i].data.activities["8eb24161-de14-43cc-bfc1-a41040dadab2"].duration == undefined) ? -1 : (docs[i].data.activities["8eb24161-de14-43cc-bfc1-a41040dadab2"].duration/3600).toFixed(2),
+					"time" : focusTime[i],
+					"problem": studentProblem[i]
+				}; 
 
 		}
 
@@ -104,13 +117,18 @@ DataProvider.prototype.AllData = function(callback){
 		    averageFocusTime[k] = (parseFloat(averageFocusTime[k]) / recordNum[k] ).toFixed(2) ;
 		}
 
-		console.log(averageFocusTime);
 		var averageStudentHours = 0 ;
 		for (var i = 0 ; i < averageFocusTime.length ; i++){
 			averageStudentHours += parseFloat(averageFocusTime[i]);
 		}
 
-		console.log(averageStudentHours);
+		for (var i = 0; i< len; i++){
+			var stat = parseInt(studentOverview[i].correctPercent/10)
+			scoreDistribution[stat]++;
+		}
+
+		console.log(scoreDistribution);
+		console.log("hello");
 
 		data.studentOverview = studentOverview;
 		data.studentProblem = studentProblem;
@@ -118,11 +136,17 @@ DataProvider.prototype.AllData = function(callback){
 		data.problemAccuracy = problemAccuracy;
 		data.focusTime = focusTime;
 		data.averageFocusTime = averageFocusTime;
+		data.scoreDistribution = scoreDistribution;
 
 		data.studentNum = len;
 		data.problemNum = problemNum;
 		data.averageStudentHours = (averageStudentHours/3600).toFixed(2);
 		data.totalStudentHours = (averageStudentHours * len/3600).toFixed(2);
+
+		fs.writeFile('newest.json', JSON.stringify(studentOverview, null, 4), function (err) {
+			  if (err) return console.log(err);
+			  console.log('Hello World > helloworld.txt');
+			});
 
 
 

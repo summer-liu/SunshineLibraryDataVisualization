@@ -21,7 +21,7 @@ var pie = d3.layout.pie()
 			.sort(null)
 			.value(function(d){return d;});
 
-var svg3 = d3.select('body').append("svg")
+var svg3 = d3.select('body').append("svg").attr("class","chart3")
 			.attr("width",width)
 			.attr("height",height)
 			.attr("y",200)

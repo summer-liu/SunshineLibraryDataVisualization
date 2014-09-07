@@ -4,19 +4,26 @@ head
 	link(rel='stylesheet',href='../stylesheets/style.css')
 	
 body
+
 	script.
 		var accuracy = [#{allData.problemAccuracy}];
 		var time = [#{allData.averageFocusTime.slice(1)}];
 		var problemData = [#{allData.problemData}];
 		var focusTime = [#{allData.averageFocusTime}];
+		var scoreDistribution = [#{allData.scoreDistribution}];
+		console.log(scoreDistribution);
 
+	#menu
+		ul
+			li
+				a(href="#Top") Summary
+			li
+				a(href="#score_bar") Score Distribution				
+			li
+				a(href="#student_table") Student Report
 	script(src="http://d3js.org/d3.v3.min.js")
 	script(src="http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js")
 
-	script
-		include ../public/javascripts/d3chart.js
-		include ../public/javascripts/d3chart3.js
-		include ../public/javascripts/d3chart2.js
 
 	table#overview
 		caption 
@@ -49,4 +56,46 @@ body
 		tr
 			td#hd Total Student Hours
 			td#dd #{allData.totalStudentHours}
+
+	script
+		include ../public/javascripts/d3chart3.js
+		include ../public/javascripts/d3chart2.js
+		include ../public/javascripts/d3chart.js
+		include ../public/javascripts/d3scorechart.js
+		include ../public/javascripts/d3table.js
+
+
+
+	#summary
+		#chart1
+		#chart2
+		#chart2
+		#overview
+
+	#scorechart
+	//div#my_table
+
+	#studentReport
+		#student_table
+		#student_bar
+
+
+	// script.
+		// var chart = document.getElementById("chart");
+		// var width = chart.offsetWidth;
+		// var height = chart.offsetHeight;		 
+		// var valueFunc = function(data) {return data.star;}
+		// var textFunc = function(data) {return data.studentId;}
+		// var columns = ["State", "Value"];
+		// drawTable(studentData, "#chart", { width: width, height: height }, textFunc,valueFunc,  columns);
+
+	// script.
+	// 	var table_id = "#my_table";
+	// 	//console.log(myData);
+	// 	var array_of_columns = [{ text: 'Star', sort: TableSort.alphabetic},{ text: 'Total Time', sort: TableSort.numeric}];
+	// 	//var array_of_columns = [{ text: 'StudentID', sort: TableSort.alphabetic,sort_column: true },{ text: 'Correct Percent', sort: TableSort.numeric},{ text: 'Star', sort: TableSort.numeric},{ text: 'Total Time', sort: TableSort.numeric}];
+	// 	//var array_of_data = [studentData.studentId, studentData.correctPercent, studentData.star, studentData.totalTime];
+	// 	var dimensions = { width: '400px', height: '700px' };
+	// 	TableSort(table_id,array_of_columns,myData,dimensions);
+
 

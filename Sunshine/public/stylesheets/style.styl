@@ -1,6 +1,39 @@
 body 
   font: 10px sans-serif
 
+#overview
+  margin-top : 50px
+  margin-left: 230px
+
+.chart3
+  margin-top:-280px
+  margin-left:700px
+
+.chart2
+  margin-top:20px
+  margin-left:10px
+
+
+.chart1
+  margin-top:-320px
+  margin-left:600px
+
+.scorechart
+  margin-top:00px
+  margin-left:200px
+  width:850
+  height:550
+
+.scorechart.axis path
+  display:none
+
+.scorechart.axis line 
+  shape-rendering: crispEdges
+  stroke: red
+  stroke-dasharray: 2,2
+
+
+
 .y.axisRight text 
     fill: orange
 
@@ -70,6 +103,8 @@ body
   pointer-events:none
   text-align: center
 
+
+
 #tooltip
   position: static
   width: 200px
@@ -102,8 +137,125 @@ caption
 
 #dd
   text-indent:10px
-#overview
-  margin-top : -280px
-  margin-left: 800px
 
 
+#student_table 
+  margin-top:0px
+  margin-left:200px
+  width: 500px
+  height: 500px
+  border:none
+  border-style:hidden
+  border-collapse: collapse
+
+
+.bodyTable
+  border:none
+  width:100%
+  border-collapse: collapse
+
+
+
+.bodyTable td 
+  width:150px
+  white-space: nowrap
+  text-overflow: ellipsis
+  overflow: hidden
+  border:none
+  border-collapse: collapse
+  text-align:center
+
+.bodyTable tr 
+  height: 40px
+  border:none
+
+.bodyTable tr:nth-child(odd) 
+    background: #DBDBFF
+
+
+.bodyTable tr:nth-child(even) 
+    background: #fff
+
+
+.bodyTable tr:hover 
+  background-color:#9900FF
+
+
+.headerTable 
+  width:600px
+  height: 30px
+  border:none
+  border-collapse: collapse
+  //background-color:#DBDBFF
+
+.headerTable td
+  width:150px
+
+
+.headerTable th:hover 
+  background-color:#0099FF
+
+
+.scroll 
+  height: 600px
+  border:none
+  overflow-x:hidden
+  overflow-y: auto
+
+#menu 
+  position:fixed
+  margin-top:00px
+  float: left
+  width: 180px
+  height: 20px
+
+
+#menu ul 
+  margin: 0
+  padding: 0px
+  list-style: none
+  line-height: normal
+
+
+#menu li 
+  display: block
+  float: left
+
+
+#menu a 
+  display: block
+  float: left
+  width:150px
+  height: 30px
+  padding: 12px 20px 10px 20px
+  letter-spacing: -1px
+  text-decoration: none
+  text-align: left
+  text-transform: none
+  font-family: Arial, Helvetica, sans-serif
+  font-size: 18px
+  font-weight: normal
+  background-color:#D0E6FF
+
+#menu a:link 
+    color: #000099
+
+/* visited link */
+#menu a:visited 
+    color: #000099
+
+
+/* mouse over link */
+#menu a:hover 
+    color: #FF00FF
+
+
+/* selected link */
+#menu a:active 
+    color: #0000FF
+
+
+
+#student_bar
+  margin-top:-480px
+  margin-left:830px

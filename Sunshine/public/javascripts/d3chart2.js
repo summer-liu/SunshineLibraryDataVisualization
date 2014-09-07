@@ -20,7 +20,7 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left");
 
-var svg2 = d3.select("body").append("svg")
+var svg2 = d3.select("body").append("svg").attr("class","chart2")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")

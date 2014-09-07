@@ -1,7 +1,7 @@
 var data = [accuracy,time];
 
 var margin = {top: 30, right: 80, bottom: 80, left: 200 },
-	width = 700 - margin.left - margin.right,
+	width = 650 - margin.left - margin.right,
 	height = 350 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal().domain([1,2,3,4,5,6,7]).rangeRoundBands([0,width],.1);
@@ -14,9 +14,11 @@ var xAxis = d3.svg.axis().scale(x).orient("bottom");
 var yAxisLeft = d3.svg.axis().scale(y0).ticks(10).orient("left");
 var yAxisRight = d3.svg.axis().scale(y1).ticks(12).orient("right");
 
-var svg1 = d3.select("body").append("svg")
+var svg1 = d3.select("body").append("svg").attr("class","chart1")
 	.attr("width", width + margin.left + margin.right)
 	.attr("height", height + margin.top + margin.bottom)
+	.attr("x",20)
+	.attr("y",30)
 	.append("g")
 	.attr("class", "graph")
 	.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
