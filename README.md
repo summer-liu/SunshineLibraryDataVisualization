@@ -3,7 +3,11 @@ SunshineLibraryDataVisualization
 
 Visualize student data of Sunshine Library
 
-First of all , install MongoDB, NodeJS, and Express on your computer.
+Link: http://summer-liu.github.io/sunshine.html
+
+Run on computer:
+
+First, install MongoDB, NodeJS, and Express on your computer.
 
 Then
 
@@ -15,4 +19,3 @@ Then
 
 3. Open browser and enter: localhost:3000.
 
-then you should be able to see the visualization. 
